@@ -197,6 +197,17 @@ function loaders() {
         loader: "graphql-tag/loader"
       },
       {
+        test: /\.hbs$/,
+        loader: "handlebars-loader",
+        options: {
+          helperDirs: path.join(__dirname, 'src/templates/helpers'),
+          partialDirs: path.join(__dirname, 'src/templates/partials'),
+          precompileOptions: {
+            knownHelpersOnly: false, // Allow additional helpers at runtime
+          },
+        },
+      },
+      {
         test: /\.css$/,
         use: [
           "isomorphic-style-loader",
